@@ -1,0 +1,2 @@
+import netbanking
+netbanking()
