@@ -28,7 +28,7 @@ class Bank:
         self.email = email
         self.dob = dob
         self.acc_type = acc_type
-        self.id = int('91'+mno)
+        self.id = '91' + mno
 
     def deposit(self):
         print('Please enter amount you want to deposit ')
@@ -40,7 +40,7 @@ class Bank:
         print(f'Current Balance = {self.bal}')
 
     def withdraw(self):
-        amt = int(input("Please Enter Amoutn to withdraw "))
+        amt = int(input("Please Enter Amount to withdraw "))
         if self.bal - amt < self.min_bal:
             self.bal -= amt
             print(f'Amount Widthdrawn | Current bal = {self.bal}')
@@ -57,18 +57,21 @@ accounts = {}
 # driver code
 print("1. Do you have Existing account?")
 print("2. Do you want to create an account?")
-c = int(input("Please enter your choice in integer"))
+c = int(input("Please enter your choice in integer: "))
 while True:
     if c == 1:  # if account exists
-        print("Enter your details \n")
-        id = int(input("Please Neter Your ID"))
-        pa = input("Please Enter Your password")
+        print("Enter your details ")
+        id = input("Please Enter Your ID: ")
+        pa = input("Please Enter Your password: ")
         obj = 0
-        if id in accounts:
+        if id in accounts.keys():
             if pa == accounts[id][0]:
                 obj = accounts[id][1]
             else:
                 print("Invalid Details | Exiting")
+        else:
+            print("Account dosen't exist")
+        print(obj.curr_bal())
         break
     elif c == 2:  # new account creation
         print("Enter your details \n")
@@ -93,7 +96,9 @@ while True:
         k, v = account_creation(name, mno, email, dob, acc_type)
         accounts[k] = v
         print("Account Created")
-        break
+        print(accounts)
+        c = 1
+        # break
     else:  # invalid option choosen
         print("Invalid : Please Choose correct Option")
     print("Exited Thank you")
