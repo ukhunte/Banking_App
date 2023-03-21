@@ -64,14 +64,17 @@ while True:
         id = input("Please Enter Your ID: ")
         pa = input("Please Enter Your password: ")
         obj = 0
+        flag = False
         if id in accounts.keys():
             if pa == accounts[id][0]:
                 obj = accounts[id][1]
+                flag = True
             else:
                 print("Invalid Details | Exiting")
         else:
             print("Account dosen't exist")
-        print(obj.curr_bal())
+        while flag:
+            pass
         break
     elif c == 2:  # new account creation
         print("Enter your details \n")
